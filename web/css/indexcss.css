@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+}
+
+.container-fluid {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#buttonDiv {
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+#startButton {
+    background-color: red;
+    color: white;
+    width: 30%;
+    height: 10%;
+    font-size: larger;
+}
