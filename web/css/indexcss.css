@@ -13,9 +13,8 @@ body {
 }
 
 #startButton {
+    font-size: larger;
     background-color: red;
     color: white;
-    width: 30%;
-    height: 10%;
-    font-size: larger;
+    border-radius: 24px;
 }
