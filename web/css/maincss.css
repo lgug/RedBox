@@ -1,16 +1,15 @@
-.row.content {
-    height: 550px;
-}
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 660px}
 
+/* Set gray background color and 100% height */
 .sidenav {
     background-color: #f1f1f1;
     height: 100%;
 }
 
+/* On small screens, set height to 'auto' for the grid */
 @media screen and (max-width: 767px) {
-    .row.content {
-        height: auto;
-    }
+    .row.content {height: auto;}
 }
 
 .navbar {
@@ -30,11 +29,28 @@
     background-color: #1b1e21;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-    color: #fff;
+.btn-block {
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: red;
+    color: white;
+    text-align: left;
+}
+
+.btn-block.active {
+    background-color: black;
 }
 
 .titleOnBlack {
     color: white;
+}
+
+.well {
+    background-color: gainsboro;
+    height: 660px;
+}
+
+#page {
+    width: 100%;
+    height: 100%;
 }

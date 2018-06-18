@@ -3,17 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Page 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/page1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/page1.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
-
-<div>
-    <h2>Net scanning</h2>
-
-</div>
-<div>
-    <h2>Port scanning</h2>
-    <p>Select a target, the type of scanning and press on SCAN</p>
-</div>
-
+    <div class="container-fluid">
+        <h2>Net scanning</h2>
+        <h5><i><b>Scan your net and your host</b></i></h5>
+        <div class="col-lg-4">
+            Select the tool for the network scanning:
+            <div class="radio">
+                <label><input type="radio" name="netscan">fping</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="netscan">nmap <i>(more time expensive)</i></label>
+            </div>
+            <form>
+                <input type="button" id="net_scanning" value="Start scanning">
+                <input type="button" id="reset_chart" value="Reset net info">
+            </form>
+        </div>
+        <div class="col-lg-8" id="net_chart"></div>
+    </div>
+    <div></div>
+    <div class="container-fluid">
+        <h2>Port scanning</h2>
+        <p>Select a target, the type of scanning and press on SCAN</p>
+        <div id="selection">
+            <form>
+                <br>
+                TCP scans:
+                <label class="radio-inline"><input type="radio" name="tcp">TCP SYN</label>
+                <label class="radio-inline"><input type="radio" name="tcp">TCP ACK</label>
+                <label class="radio-inline"><input type="radio" name="tcp">TCP FIN</label>
+                <br>
+                ICMP scans:
+                <label class="radio-inline"><input type="radio" name="icmp">ICMP ECHO</label>
+                <label class="radio-inline"><input type="radio" name="icmp">ICMP ..</label>
+                <br>
+                Other scans:
+                <label class="checkbox-inline"><input type="checkbox" value="udp">UDP scan</label>
+                <label class="checkbox-inline"><input type="checkbox" value="sctp">SCTP scan</label>
+                <label class="checkbox-inline"><input type="checkbox" value="ip">IP scan</label>
+                <br><br>
+                <div class="form-group form-inline">
+                    <label for="target">Specify the Target:</label>
+                    <input type="text" class="form-control" id="target">
+                    <input type="button" id="portscan_button" value="PORT SCANNING">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
