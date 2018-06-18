@@ -1,7 +1,7 @@
 # RedBox
 A simple software for the basic penetration testing operations.
 
-###Installation
+### Installation
 Pre-requisites:
 * Any recent Linux distribution
 * Root privileges
@@ -12,47 +12,47 @@ You must to have installed:
 * OpenVAS CLI
 * Metasploit
 
-#####fping installation
+##### fping installation
 To install fping, you have to prompt:
 
-`sudo apt-get install fping`
+* `sudo apt-get install fping`
 
-#####nmap installation
+##### nmap installation
 To install nmap, you have to prompt:
 
-`sudo apt-get install nmap`
+* `sudo apt-get install nmap`
 
-#####OpenVAS installation
+##### OpenVAS installation
 Depending on your Linux distribution, there are many ways to install OpenVAS. Red Box uses the version 9 of the software
 and the following procedure was tested on Linux Mint and Ubuntu. For more information about the installation in different distribution visit http://www.openvas.org/install-packages.html
 
 To install OpenVAS 9, you have to prompt:
 
-`sudo apt-get install sqlite3` to install the SQLite libraries
+* `sudo apt-get install sqlite3` to install the SQLite libraries
 
-`sudo add-apt-repository ppa:mrazavi/openvas`
+* `sudo add-apt-repository ppa:mrazavi/openvas`
 
-`sudo apt-get install openvas9`
+* `sudo apt-get install openvas9`
 
-`sudo greenbone-nvt-sync`
+* `sudo greenbone-nvt-sync`
 
-`sudo greenbone-scapdata-sync`
+* `sudo greenbone-scapdata-sync`
 
-`sudo greenbone-certdata-sync`
+* `sudo greenbone-certdata-sync`
 
-`sudo service openvas-scanner restart`
+* `sudo service openvas-scanner restart`
 
-`sudo service openvas-manager restart`
+* `sudo service openvas-manager restart`
 
-`sudo openvasmd --rebuild --progress`
+* `sudo openvasmd --rebuild --progress`
 
 To check the status of the installation follow the instructions here: http://www.openvas.org/setup-and-start.html
 
-#####Metasploit installation
+##### Metasploit installation
 To install Metasploit, you have to prompt:
 
-`sudo add-apt-repository -y ppa:webupd8team/java`
+* `sudo add-apt-repository -y ppa:webupd8team/java`
 
-`sudo apt-get install metasploit-framework`
+* `sudo apt-get install metasploit-framework`
 
-##*Enjoy RED BOX !!!*
+## *Enjoy RED BOX !!!*
