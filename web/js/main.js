@@ -11,7 +11,7 @@ $(document).ready(function ($) {
     });
 
     $("#EX_link").on("click", function () {
-        $("#page").attr("data", "../html/page2.html");
+        $("#page").attr("data", "../html/page3.html");
         $("EX_link").addClass("active")
     });
 });

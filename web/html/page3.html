@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/page3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/page3.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="col-sm-7">
+        <h2>Exploitation</h2>
+        <h5><i><b>Get access to your target and launch your command</b></i></h5>
+        <br>
+        <div class="form-group form-inline">
+            <label for="target">Specify the Target:</label>
+            <input type="text" class="form-control" id="target">
+            <br>
+            <label for="scanType">Select the exploit from the near list:</label>
+            <input type="text" class="form-control" id="scanType">
+            <br><br>
+            <input type="button" id="vulnscan_button" value="EXPLOIT!!!">
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <img src="../resources/1462438854.png" width="300" height="280">
+        <div class="form-group form-inline">
+            <label for="osFilter">Select the OS:</label>
+            <input type="text" class="form-control" id="osFilter">
+        </div>
+    </div>
+    <div class="col-sm-12" id="vulnTable">
+        <textarea name="testo" rows="5" cols="40">
+            Write the metasploit command to control the target...
+        </textarea>
+    </div>
+</div>
+</body>
+</html>

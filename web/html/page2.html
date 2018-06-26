@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page 2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/page2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/page3.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="col-sm-5">
+        <img src="../resources/Pie-chart.jpg" width="300" height="280">
+    </div>
+    <div class="col-sm-7">
+        <h2>Vulnerability Assessment</h2>
+        <h5><i><b>Analyze your target to discover all its vulnerability</b></i></h5>
+        <br>
+        <div class="form-group form-inline">
+            <label for="target">Specify the Target:</label>
+            <input type="text" class="form-control" id="target">
+            <br>
+            <label for="scanType">Specify the type of analysis:</label>
+            <input type="text" class="form-control" id="scanType">
+            <br><br>
+            <input type="button" id="vulnscan_button" value="START TO ANALYZE">
+        </div>
+    </div>
+    <div class="col-sm-12" id="vulnTable"></div>
+</div>
+
+</body>
+</html>

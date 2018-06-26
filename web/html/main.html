@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Red Box</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/maincss.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/maincss.css">
     <script src="../js/main.js"></script>
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse" id="logoNavbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand" id="logo">
-                    <img src="../resources/redbox.png" width="220">
-                </div>
-            </div>
-        </div>
-    </nav>
-
+<nav class="navbar navbar-inverse" id="logoNavbar">
     <div class="container-fluid">
-        <div class="row content">
-            <div class="col-lg-3 sidenav hidden-xs" id="phasesNavbar">
-                <h4 class="titleOnBlack">Penetration testing phases</h4>
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active">Initial Settings</li>
-                    <li class="active">Information Gathering</li>
-                    <li class="active">Exploitation</li>
-                </ul><br>
+        <div class="navbar-header">
+            <div class="navbar-brand media-left" id="logo">
+                <img src="../resources/redbox.png" width="220">
             </div>
-            <br>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
 
-            <div class="col-lg-9">
-                    <object id="page1" data="../html/page1.html"></object>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs" id="phasesNavbar">
+            <h3 class="titleOnBlack">Penetration testing phases</h3>
+            <br>
+            <button id="IF_link" type="button" class="btn btn-block">Information Gathering</button>
+            <button id="VA_link" type="button" class="btn btn-block">Vulnerability Assessment</button>
+            <button id="EX_link" type="button" class="btn btn-block">Exploitation</button>
+            <br>
+            <button id="backard_arrow" type="button" class="btn btn-block"><</button>
+            <button id="forward_arrow" type="button" class="btn btn-block">></button>
+        </div>
+        <br>
+
+        <div class="col-sm-9">
+            <div class="well">
+                <object id="page"></object>
             </div>
         </div>
     </div>
+</div>
+
 </body>
 </html>

@@ -8,26 +8,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../js/page1.js"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
 </head>
 <body>
     <div class="container-fluid">
-        <h2>Net scanning</h2>
-        <h5><i><b>Scan your net and your host</b></i></h5>
-        <div class="col-lg-4">
+        <div class="col-sm-5">
+            <h2>Net scanning</h2>
+            <h5><i><b>Scan your net and your host</b></i></h5>
+            <br>
             Select the tool for the network scanning:
             <div class="radio">
-                <label><input type="radio" name="netscan">fping</label>
+                <label><input type="radio" name="netscan" value="fping">fping</label>
             </div>
             <div class="radio">
-                <label><input type="radio" name="netscan">nmap <i>(more time expensive)</i></label>
+                <label><input type="radio" name="netscan" value="nmap">nmap <i>(more time expensive)</i></label>
             </div>
             <form>
                 <input type="button" id="net_scanning" value="Start scanning">
                 <input type="button" id="reset_chart" value="Reset net info">
             </form>
         </div>
-        <div class="col-lg-8" id="net_chart"></div>
+        <div class="col-sm-7" id="net_chart"></div>
     </div>
     <div></div>
     <div class="container-fluid">
@@ -37,15 +39,19 @@
             <form>
                 <br>
                 TCP scans:
-                <label class="radio-inline"><input type="radio" name="tcp">TCP SYN</label>
-                <label class="radio-inline"><input type="radio" name="tcp">TCP ACK</label>
-                <label class="radio-inline"><input type="radio" name="tcp">TCP FIN</label>
+                <label class="radio-inline"><input type="radio" name="tcp" value="syn">TCP SYN</label>
+                <label class="radio-inline"><input type="radio" name="tcp" value="ack">TCP ACK</label>
+                <label class="radio-inline"><input type="radio" name="tcp" value="fin">TCP FIN</label>
+                <label class="radio-inline"><input type="radio" name="tcp" value="null">TCP NULL</label>
+                <label class="radio-inline"><input type="radio" name="tcp" value="no">None</label>
                 <br>
-                ICMP scans:
-                <label class="radio-inline"><input type="radio" name="icmp">ICMP ECHO</label>
-                <label class="radio-inline"><input type="radio" name="icmp">ICMP ..</label>
+                Timing grade:
+                <label class="radio-inline"><input type="radio" name="timing" value="0">T0</label>
+                <label class="radio-inline"><input type="radio" name="timing" value="1">T1</label>
+                <label class="radio-inline"><input type="radio" name="timing" value="2">T2</label>
                 <br>
                 Other scans:
+                <label class="checkbox-inline"><input type="checkbox" name="icmp">ICMP scan (Ping)</label>
                 <label class="checkbox-inline"><input type="checkbox" value="udp">UDP scan</label>
                 <label class="checkbox-inline"><input type="checkbox" value="sctp">SCTP scan</label>
                 <label class="checkbox-inline"><input type="checkbox" value="ip">IP scan</label>
@@ -57,6 +63,7 @@
                 </div>
             </form>
         </div>
+        <div><table id="table_div"></table></div>
     </div>
 </body>
 </html>
