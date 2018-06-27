@@ -8,3 +8,9 @@ textarea {
     width: 100%;
     height: 150px;
 }
+
+#resultText {
+    font-size: 30px;
+    font-family: "DejaVu Sans Mono";
+    color: #1b1e21;
+}

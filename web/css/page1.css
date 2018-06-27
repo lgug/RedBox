@@ -22,6 +22,6 @@ body {
 
 #net_chart {
     background-color: white;
-    height: 0;
-    width: 0;
+    height: auto;
+    width: auto;
 }

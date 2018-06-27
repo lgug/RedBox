@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Page 1</title>
+    <title>Page 3</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/page3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,24 +19,44 @@
             <label for="target">Specify the Target:</label>
             <input type="text" class="form-control" id="target">
             <br>
-            <label for="scanType">Select the exploit from the near list:</label>
+            <label for="scanType">Select the exploit:</label>
             <input type="text" class="form-control" id="scanType">
             <br><br>
-            <input type="button" id="vulnscan_button" value="EXPLOIT!!!">
+            <input type="button" id="exploit_button" value="EXPLOIT!!!">
         </div>
     </div>
     <div class="col-sm-5">
-        <img src="../resources/1462438854.png" width="300" height="280">
+        <canvas id="tableCanvas">
+            <table id="table_exploit"></table>
+        </canvas>
         <div class="form-group form-inline">
-            <label for="osFilter">Select the OS:</label>
-            <input type="text" class="form-control" id="osFilter">
+            <label for="osFilter">Select target OS:</label>
+            <select class="form-control btn-info" id="osFilter" title="Choose the OS...">
+                <optgroup label="Microsoft">
+                    <option value="windows">Windows</option>
+                </optgroup>
+                <optgroup label="Apple">
+                    <option value="apple">Mac OS</option>
+                    <option value="ios">iOS</option>
+                </optgroup>
+                <optgroup label="Unix-based">
+                    <option value="android">Android</option>
+                    <option value="linux">Linux</option>
+                </optgroup>
+            </select>
         </div>
+    </div>
+    <div class="col-sm-12 text-center">
+        <br>
+        <p id="resultText">nothing yet...</p>
+        <br>
     </div>
     <div class="col-sm-12" id="vulnTable">
         <textarea name="testo" rows="5" cols="40">
             Write the metasploit command to control the target...
         </textarea>
     </div>
+
 </div>
 </body>
 </html>
