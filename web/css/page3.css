@@ -14,3 +14,13 @@ textarea {
     font-family: "DejaVu Sans Mono";
     color: #1b1e21;
 }
+
+#exp_dbNumber {
+    font-size: 700%;
+    color: indigo;
+}
+
+#exp_dbLine {
+    font-size: 150%;
+    color: indigo;
+}

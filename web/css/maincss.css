@@ -54,3 +54,9 @@
     width: 100%;
     height: 100%;
 }
+
+#myName {
+    color: white;
+    float: right;
+    font-size: 70%;
+}

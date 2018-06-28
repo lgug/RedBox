@@ -25,25 +25,54 @@
             <input type="button" id="exploit_button" value="EXPLOIT!!!">
         </div>
     </div>
-    <div class="col-sm-5">
-        <canvas id="tableCanvas">
-            <table id="table_exploit"></table>
-        </canvas>
-        <div class="form-group form-inline">
-            <label for="osFilter">Select target OS:</label>
-            <select class="form-control btn-info" id="osFilter" title="Choose the OS...">
-                <optgroup label="Microsoft">
-                    <option value="windows">Windows</option>
-                </optgroup>
-                <optgroup label="Apple">
-                    <option value="apple">Mac OS</option>
-                    <option value="ios">iOS</option>
-                </optgroup>
-                <optgroup label="Unix-based">
-                    <option value="android">Android</option>
-                    <option value="linux">Linux</option>
-                </optgroup>
-            </select>
+    <div class="col-sm-5 text-center">
+        <h1 id="exp_dbNumber">3681</h1>
+        <h6 id="exp_dbLine">exploits in the Rapid7 database</h6>
+        <div>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Select an exploit</button>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Exploits</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group form-inline">
+                                <label for="exp_os">Search by OS:</label>
+                                <select class="form-control" id="exp_os" title="Choose the OS...">
+                                    <optgroup label="Microsoft">
+                                        <option value="windows">Windows</option>
+                                    </optgroup>
+                                    <optgroup label="Apple">
+                                        <option value="apple">Mac OS</option>
+                                        <option value="ios">iOS</option>
+                                    </optgroup>
+                                    <optgroup label="Unix-based">
+                                        <option value="android">Android</option>
+                                        <option value="linux">Linux</option>
+                                    </optgroup>
+                                </select>
+                                <label for="exp_name">Search by name:</label>
+                                <input type="text" class="form-control" id="exp_name">
+                                <label for="exp_func">Search by function:</label>
+                                <input type="text" class="form-control" id="exp_func">
+                                <input type="button" id="exp_search" value="SEARCH">
+                            </form>
+                            <table id="table_exploit"></table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-sm-12 text-center">
