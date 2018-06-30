@@ -8,16 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script
-    <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
-    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
     <script src="../js/page1.js"></script>
     <!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
 </head>
@@ -36,45 +26,42 @@
             </div>
             <form>
                 <input type="button" id="net_scanning" value="Start scanning">
-                <input type="button" id="reset_chart" value="Reset net info">
             </form>
         </div>
-        <div class="col-sm-7" id="net_chart">
+        <div class="col-sm-7">
+            <!-- Trigger the modal with a button -->
+            <button type="button" id="net_chart_button" class="btn btn-info btn-success" data-toggle="modal" data-target="#myModal">0<br>hosts</button>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">NET HOSTS</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <table id="net_table" class="table table-bordered table-hover text-center"></table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-    <div></div>
     <div class="container-fluid">
         <h2>Port scanning</h2>
         <p>Select a target, the type of scanning and press on SCAN</p>
         <div id="selection">
-            <!--<form>-->
-                <!--<br>-->
-                <!--TCP scans:-->
-                <!--<label class="radio-inline"><input type="radio" name="tcp" value="syn">TCP SYN</label>-->
-                <!--<label class="radio-inline"><input type="radio" name="tcp" value="ack">TCP ACK</label>-->
-                <!--<label class="radio-inline"><input type="radio" name="tcp" value="fin">TCP FIN</label>-->
-                <!--<label class="radio-inline"><input type="radio" name="tcp" value="null">TCP NULL</label>-->
-                <!--<label class="radio-inline"><input type="radio" name="tcp" value="no">None</label>-->
-                <!--<br>-->
-                <!--Timing grade:-->
-                <!--<label class="radio-inline"><input type="radio" name="timing" value="0">T0</label>-->
-                <!--<label class="radio-inline"><input type="radio" name="timing" value="1">T1</label>-->
-                <!--<label class="radio-inline"><input type="radio" name="timing" value="2">T2</label>-->
-                <!--<br>-->
-                <!--Other scans:-->
-                <!--<label class="checkbox-inline"><input type="checkbox" name="icmp">ICMP scan (Ping)</label>-->
-                <!--<label class="checkbox-inline"><input type="checkbox" value="udp">UDP scan</label>-->
-                <!--<label class="checkbox-inline"><input type="checkbox" value="sctp">SCTP scan</label>-->
-                <!--<label class="checkbox-inline"><input type="checkbox" value="ip">IP scan</label>-->
-                <!--<br><br>-->
-                <!--<div class="form-group form-inline">-->
-                    <!--<label for="target">Specify the Target:</label>-->
-                    <!--<input type="text" class="form-control" id="target">-->
-                    <!--<input type="button" id="portscan_button" value="PORT SCANNING">-->
-                <!--</div>-->
-            <!--</form>-->
             <form class="form-group form-inline">
-                <label for="tcp">Select the TCP scan:</label>
+                <label for="tcp">TCP scan:</label>
                 <select class="form-control" id="tcp" title="Select a scan...">
                     <option value="no">None</option>
                     <option value="-sS">TCP SYN</option>
@@ -83,25 +70,23 @@
                     <option value="-sN">TCP NULL</option>
                     <option value="-sX">TCP XMAS</option>
                 </select>
-                <label for="icmp">Select the ICMP scan:</label>
+                <label for="icmp">ICMP scan:</label>
                 <select class="form-control" id="icmp" title="Select a scan...">
                     <option value="-PN">Don't ping</option>
-                    <option value="-PE">ICMP Echo ping</option>
-                    <option value="-PP">ICMP Timestamp ping</option>
-                    <option value="-PM">ICMP Address mask ping</option>
+                    <option value="-PE">ICMP Echo</option>
+                    <option value="-PP">ICMP Timestamp</option>
+                    <option value="-PM">ICMP Address mask</option>
                 </select>
-                <label for="other">Select the TCP scan:</label>
-                <select class="form-control" id="other" title="Select a scan...">
-                    <option value="no">None</option>
-                    <option value="-sS">TCP SYN</option>
-                    <option value="-sA">TCP ACK</option>
-                    <option value="-sF">TCP FIN</option>
-                    <option value="-sN">TCP NULL</option>
-                    <option value="-sX">TCP XMAS</option>
-                </select>
+                <label><input type="checkbox" name="other1" value="-sU">UDP scan</label>
+                <label><input type="checkbox" name="other2" value="-sY">SCTP scan</label>
+                <label><input type="checkbox" name="other3" value="-sO">IP scan</label>
+                <br><br>
+                <label for="target_text">Select the target:</label>
+                <input type="text" class="form-control" id="target_text">
+                <input type="button" id="portscan_button" value="PORT SCAN">
             </form>
         </div>
-        <div><table id="table_div"></table></div>
+        <div><table id="table_div" class="table table-bordered table-hover text-center"></table></div>
     </div>
 </body>
 </html>

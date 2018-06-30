@@ -55,4 +55,14 @@ To install Metasploit, you have to prompt:
 
 * `sudo apt-get install metasploit-framework`
 
+#
+### Issues
+In case you encounter the issues below, follow the instruction:
+
+* If you get the _Failed to authenticate_ error during the OpenVas execution, remember that Red Box requires a OpenVas user with name and password **admin** and with the role of Administrator.
+
+* If you get the _Failed to acquire socket_ during OpenVas execution, you need to know that Red Box uses the port **9390** and the address **0.0.0.0**. In this case you have to prompt:
+`sudo openvasmd -a 0.0.0.0 -p 9390`
+
+#
 ## *Enjoy RED BOX !!!*
