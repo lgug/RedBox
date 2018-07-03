@@ -14,4 +14,15 @@ $(document).ready(function ($) {
         $("#page").attr("data", "../html/page3.html");
         $("EX_link").addClass("active")
     });
+
+    $("#PC_link").on("click", function () {
+        $("#page").attr("data", "../html/page4.html");
+        $("PC_link").addClass("active")
+    });
+
+    $("#PR_link").on("click", function () {
+        $("#page").attr("data", "../html/page5.html");
+        $("PR_link").addClass("active")
+    });
+
 });

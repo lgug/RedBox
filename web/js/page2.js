@@ -1,86 +1,6 @@
 $(document).ready(function ($) {
 
-    var vulnInfo =
-        {
-            "vulnerabilityList": [
-                {
-                    "name": "CPE Inventory",
-                    "port": "general/CPE-T",
-                    "description": "This routine uses information collected by other routines about",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "DCE/RPC and MSRPC Services Enumeration",
-                    "port": "135/tcp",
-                    "description": "Distributed Computing Environment / Remote Procedure Calls (DCE/RPC) or MSRPC se!",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "DCE/RPC and MSRPC Services Enumeration Reporting",
-                    "port": "135/tcp",
-                    "description": "Distributed Computing Environment / Remote Procedure Calls (DCE/RPC) or MSRPC se!",
-                    "threatLevel": "Medium (CVSS: 5.0)"
-                },
-                {
-                    "name": "Microsoft Windows SMB Server Multiple Vulnerabilities-Remote (4013389)",
-                    "port": "445/tcp",
-                    "description": "This host is missing a critical security",
-                    "threatLevel": "High (CVSS: 9.3)"
-                },
-                {
-                    "name": "OS Detection Consolidation and Reporting",
-                    "port": "general/tcp",
-                    "description": "This script consolidates the OS information detected by several NVTs and tries t!",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "SMB NativeLanMan",
-                    "port": "445/tcp",
-                    "description": "It is possible to extract OS, domain and SMB server information",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "SMB Remote Version Detection",
-                    "port": "445/tcp",
-                    "description": "Detection of Server Message Block(SMB).",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "SMB Test with 'smbclient'",
-                    "port": "445/tcp",
-                    "description": "This script tests the remote host SMB Functions with the 'smbclient' tool.",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "SMB/CIFS Server Detection",
-                    "port": "445/tcp",
-                    "description": "This script detects wether port 445 and 139 are open and",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "SMB/CIFS Server Detection",
-                    "port": "139/tcp",
-                    "description": "This script detects wether port 445 and 139 are open and",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "Traceroute",
-                    "port": "general/tcp",
-                    "description": "A traceroute from the scanning server to the target system was",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                },
-                {
-                    "name": "Windows LSC Authenticated Scan Info Consolidation",
-                    "port": "general/tcp",
-                    "description": "This script consolidates various technical information about",
-                    "threatLevel": "Log (CVSS: 0.0)"
-                }
-            ],
-            "logNumber": 10,
-            "lowNumber": 0,
-            "mediumNumber": 1,
-            "highNumber": 1
-        };
+    var vulnInfo = {};
     var configId = "daba56c8-73ec-11df-a475-002264764cea";
     var txtId = "a3810a62-1f62-11e1-9219-406186ea4fc5";
     var taskId;
@@ -90,10 +10,9 @@ $(document).ready(function ($) {
     var defaultParams = "-u__admin__-w__admin__-h__0.0.0.0__-p__9390__";
 
     //operations on page loading
-    generatePieChart();
+    generatePieChartWIthNullValue();
 
     $("#vulnscan_button").on("click", function () {
-        /*
         var host = $("#target").val();
         var targetCreationParameters = function () {
             return defaultParams + "-X__" +
@@ -152,13 +71,9 @@ $(document).ready(function ($) {
                 });
             }
         });
-        */
     });
 
     $("#result_button").on("click", function () {
-        generateVulnTable();
-        generatePieChart();
-        /*
         $.ajax({
             url : 'http://localhost:8080/exec',
             type : 'GET',
@@ -175,8 +90,52 @@ $(document).ready(function ($) {
                 generateVulnTable();
             }
         });
-        */
     });
+
+    function generatePieChartWIthNullValue() {
+        var canvas = $("#vuln_chart");
+
+        var options = {
+            title: {
+                display: true,
+                text: "Vulnerabilities risk levels"
+            },
+            legend: {
+                display: false,
+                position: 'bottom'
+            },
+            animation: {
+                duration: 2000
+            },
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            }
+        };
+
+        var data = {
+            datasets: [{
+                data: [
+                    100
+                ],
+                backgroundColor: ['gray']
+            }],
+
+            labels: [
+                'Nothing'
+                ]
+        };
+
+        var chart = new Chart(canvas, {
+            type: 'pie',
+            data: data,
+            options: options
+        });
+    }
 
     function generatePieChart() {
         var canvas = $("#vuln_chart");
@@ -205,19 +164,13 @@ $(document).ready(function ($) {
 
         var data = {
             datasets: [{
-                data: function () {
-                    if (vulnInfo === {}) {
-                        return [0,0,0,0];
-                    } else {
-                        return [
-                            vulnInfo.logNumber,
-                            vulnInfo.lowNumber,
-                            vulnInfo.mediumNumber,
-                            vulnInfo.highNumber
-                        ];
-                    }
-                },
-                backgroundColor: ['blue', 'yellow', 'orange', 'red']
+                data: [
+                    vulnInfo.logNumber,
+                    vulnInfo.lowNumber,
+                    vulnInfo.mediumNumber,
+                    vulnInfo.highNumber
+                ],
+                backgroundColor: ['#3399ff', 'yellow', 'orange', 'red']
             }],
 
             labels: [

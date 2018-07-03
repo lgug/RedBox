@@ -6,7 +6,6 @@ textarea {
     background-color: black;
     color: white;
     width: 100%;
-    height: 150px;
 }
 
 #resultText {
@@ -27,4 +26,8 @@ textarea {
 
 #table_exploit {
     font-size: 80%;
+}
+
+#text_area_button {
+    width: 100%;
 }

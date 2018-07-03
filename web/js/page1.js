@@ -1,88 +1,9 @@
 $(document).ready(function ($) {
 
     var netInfo = {};
-    var portsInfo =
-    {
-        "scanningTime": 29.66,
-        "hostScanList": [
-        {
-            "hostname": "192.168.1.4",
-            "ports": [
-                {
-                    "portNumber": 135,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "msrpc"
-                },
-                {
-                    "portNumber": 139,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "netbios-ssn"
-                },
-                {
-                    "portNumber": 445,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "microsoft-ds"
-                },
-                {
-                    "portNumber": 2869,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "icslap"
-                },
-                {
-                    "portNumber": 5357,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "wsdapi"
-                },
-                {
-                    "portNumber": 49152,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "unknown"
-                },
-                {
-                    "portNumber": 49153,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "unknown"
-                },
-                {
-                    "portNumber": 49154,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "unknown"
-                },
-                {
-                    "portNumber": 49155,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "unknown"
-                },
-                {
-                    "portNumber": 49156,
-                    "protocol": "TCP",
-                    "portStatus": "OPEN",
-                    "service": "unknown"
-                },
-                {
-                    "portNumber": 137,
-                    "protocol": "UDP",
-                    "portStatus": "OPEN",
-                    "service": "netbios-ns"
-                }
-            ],
-            "up": true
-        }
-    ]
-    };
+    var portsInfo = {};
 
     $("#net_scanning").on("click", function () {
-        generateHostsTable();
-        /*
         var command = $("input[name=netscan]:checked").val();
         var parameters = function() {
             var result = "";
@@ -107,16 +28,14 @@ $(document).ready(function ($) {
             success: function (e) {
                 console.log(e);
                 netInfo = e;
-                $("#net_chart_button").html(e.hostScanList.length + "<br>hosts");
+                $("#net_chart_button").html(netInfo.hostScanList.length + "<br>hosts");
                 generateHostsTable();
             }
         });
-        */
+
     });
 
     $("#portscan_button").on("click", function () {
-        generatePortTable();
-        /*
         var parameters = function() {
             var result = "";
             var tcp = $("#tcp").val();
@@ -151,7 +70,7 @@ $(document).ready(function ($) {
                 portsInfo = e;
                 generatePortTable();
             }
-        });*/
+        });
     });
 
     function generateHostsTable() {
@@ -171,7 +90,7 @@ $(document).ready(function ($) {
             var currentHostname = netInfo.hostScanList[i].hostname;
             var row = table.insertRow(i+1);
             row.insertCell(0).innerHTML = currentHostname;
-            row.style.background = "#" + Math.random().toString(16).slice(2, 8);
+            row.style.background = "#cccccc";
         }
     }
 

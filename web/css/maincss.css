@@ -1,5 +1,5 @@
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 660px}
+.row.content {height: 100vh;}
 
 /* Set gray background color and 100% height */
 .sidenav {
@@ -8,7 +8,7 @@
 }
 
 /* On small screens, set height to 'auto' for the grid */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 100vh) {
     .row.content {height: auto;}
 }
 
@@ -32,12 +32,20 @@
 .btn-block {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: red;
-    color: white;
     text-align: left;
 }
 
-.btn-block.active {
+#IF_link, #VA_link, #EX_link {
+    background-color: red;
+    color: white;
+}
+
+#PC_link, #PR_link {
+    background-color: #ff6600;
+    color: white;
+}
+
+.btn-block::selection {
     background-color: black;
 }
 

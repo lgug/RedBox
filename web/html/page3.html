@@ -46,6 +46,9 @@
                             <form class="form-group form-inline">
                                 <label for="exp_os">Search by OS:</label>
                                 <select class="form-control" id="exp_os" title="Choose the OS...">
+                                    <optgroup label="Multiplatform">
+                                        <option value="multi">Multi</option>
+                                    </optgroup>
                                     <optgroup label="Microsoft">
                                         <option value="windows">Windows</option>
                                     </optgroup>
@@ -78,10 +81,12 @@
         <p id="resultText">nothing yet...</p>
         <br>
     </div>
-    <div class="col-sm-12" id="vulnTable">
-        <textarea name="testo" rows="5" cols="40">
-            Write the metasploit command to control the target...
-        </textarea>
+    <div class="col-sm-12 text-center">
+        <label>
+            <textarea name="testo" id="text_area" rows="5" cols="40">Write metasploit command...</textarea>
+            <input type="button" id="text_area_button" value="EXECUTE COMMAND">
+        </label>
+
     </div>
 
 </div>
