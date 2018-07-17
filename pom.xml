@@ -42,9 +42,9 @@
 		<!--</dependency>-->
 
 		<dependency>
-			<groupId>com.jcraft</groupId>
-			<artifactId>jsch</artifactId>
-			<version>0.1.54</version>
+			<groupId>org.bitcoinj</groupId>
+			<artifactId>orchid</artifactId>
+			<version>1.2.1</version>
 		</dependency>
 
 		<dependency>
