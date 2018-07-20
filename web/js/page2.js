@@ -1,8 +1,19 @@
 $(document).ready(function ($) {
 
     var vulnInfo = {};
-    var configId = "daba56c8-73ec-11df-a475-002264764cea";
-    var txtId = "a3810a62-1f62-11e1-9219-406186ea4fc5";
+    var configId = {
+        "Discovery": "8715c877-47a0-438d-98a3-27c7a6ab2196",
+        "Full and fast": "daba56c8-73ec-11df-a475-002264764cea",
+        "Full and fast ultimate": "698f691e-7489-11df-9d8c-002264764cea",
+        "Full and very deep": "708f25c4-7489-11df-8094-002264764cea",
+        "Full and very deep ultimate": "74db13d6-7489-11df-91b9-002264764cea",
+        "Host discovery": "2d3f051c-55ba-11e3-bf43-406186ea4fc5",
+        "System discovery": "bbca7412-a950-11e3-9109-406186ea4fc5"
+    };
+    var reportFormatId = {
+        "TXT": "a3810a62-1f62-11e1-9219-406186ea4fc5",
+        "ANONYMOUS XML": "5057e5cc-b825-11e4-9d0e-28d24461215b"
+    };
     var taskId;
     var reportId;
     var targetId;
@@ -17,17 +28,21 @@ $(document).ready(function ($) {
         var targetCreationParameters = function () {
             return defaultParams + "-X__" +
                 "<create_target>" +
-                "<name>redboxtask</name>" +
+                "<name>redboxtarget</name>" +
                 "<hosts>" + host + "</hosts>" +
                 "</create_target>";
         };
         var taskCreationParameters = function() {
             return defaultParams + "-X__" +
                 "<create_task>" +
-                "<name>taskdiprova</name>" +
+                "<name>redboxtask</name>" +
                 "<config id=\"" + configId + "\"/>" +
                 "<target id=\"" + targetId + "\"/>" +
                 "</create_task>";
+        };
+        var startingTaskCreationParameters = function() {
+            return defaultParams + "-X__" +
+                "<start_task task_id=\"" + taskId + "\"/>"
         };
         $.ajax({
             url : 'http://localhost:8080/exec',
@@ -59,12 +74,13 @@ $(document).ready(function ($) {
                             dataType: "json",
                             data : {
                                 command: "omp",
-                                parameters: defaultParams + "--start-task__" + taskId,
+                                parameters: startingTaskCreationParameters(),
                                 launch_time: 1
                             },
                             success: function (e) {
                                 console.log(e);
                                 reportId = e.reportId;
+                                showRunningSymbol();
                             }
                         });
                     }
@@ -73,24 +89,59 @@ $(document).ready(function ($) {
         });
     });
 
-    $("#result_button").on("click", function () {
+    function showRunningSymbol() {
+        var getTaskStatusCreationParameters = function () {
+            return defaultParams + "-X__" +
+                "<get_tasks task_id=\"" + taskId + "\" detail=\"1\"/>";
+        };
+        var getReportCreationParameters = function () {
+            return defaultParams + "-X__" +
+                "<get_reports report_id=\"" + reportId + "\" " +
+                "format_id=\"" + reportFormatId["ANONYMOUS XML"] + "\"/>";
+        };
+        var reportStatus = "NEW";
+        var runningStatus = 0;
+        while (status !== "DONE"){
+            setTimeout(function(){
+                $.ajax({
+                    url: 'http://localhost:8080/exec',
+                    type: 'GET',
+                    dataType: "json",
+                    data: {
+                        command: "omp",
+                        parameters: getTaskStatusCreationParameters(),
+                        launch_time: 1
+                    },
+                    success: function (e) {
+                        console.log(e);
+                        reportStatus = e.reportStatus;
+                        runningStatus = e.runningStatus;
+                    },
+                    error: function (e) {
+                        //...
+                    }
+                });
+                //change the visible symbol
+            }, 5000);
+        }
         $.ajax({
-            url : 'http://localhost:8080/exec',
-            type : 'GET',
+            url: 'http://localhost:8080/exec',
+            type: 'GET',
             dataType: "json",
-            data : {
+            data: {
                 command: "omp",
-                parameters: defaultParams + "-R__" + reportId + "__-f__" + txtId,
+                parameters: getReportCreationParameters(),
                 launch_time: 1
             },
             success: function (e) {
                 console.log(e);
-                vulnInfo = e.taskResult;
-                generatePieChart();
-                generateVulnTable();
+                vulnInfo = e;
+            },
+            error: function (e) {
+                //...
             }
         });
-    });
+    }
 
     function generatePieChartWIthNullValue() {
         var canvas = $("#vuln_chart");
