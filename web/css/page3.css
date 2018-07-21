@@ -12,6 +12,7 @@ textarea {
     font-size: 30px;
     font-family: "DejaVu Sans Mono";
     color: #1b1e21;
+    border: cadetblue solid 3px;
 }
 
 #exp_dbNumber {
