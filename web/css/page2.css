@@ -11,3 +11,7 @@ body {
     padding-left: 10%;
     padding-right: 10%;
 }
+
+#loading {
+    align-self: center;
+}
